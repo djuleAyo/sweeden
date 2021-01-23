@@ -16,6 +16,8 @@ type UserProfileProps = {
   brand: 'admin',
   selectedRole: 'admin',
   avatar:  */
+
+  onPerspectiveSelection?: Function;
 };
 
 const coverHolder: CSSProperties = {
@@ -35,6 +37,8 @@ const coverEffectCSS: CSSProperties = {
   filter: 'blur(6px) brightness(0.8)',
 };
 
+const roles = 'adimn seller user'.split(' ');
+
 export function UserProfile(props: UserProfileProps): ReactElement {
   return (
     <Fragment>
@@ -48,12 +52,14 @@ export function UserProfile(props: UserProfileProps): ReactElement {
           <LocationOn/> {props.country}, {props.city}
         </Typography>
       </div>
-      <span>Perspective:</span>
-      <ButtonGroup disableElevation variant="contained" color="primary">
-        <Button>Admin</Button>
-        <Button>Seller</Button>
-        <Button>User</Button>
-      </ButtonGroup>
+      <div style={{padding: '10px'}}>
+        <span>Perspective:</span>
+        <ButtonGroup disableElevation variant="contained" color="primary">
+          {
+            roles.map(x => <Button key={x} onClick={() => props.onPerspectiveSelection && props.onPerspectiveSelection(x)}>{x}</Button>)
+          }
+        </ButtonGroup>
+      </div>
     </Fragment>
   );
 }
