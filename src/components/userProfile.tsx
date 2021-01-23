@@ -1,6 +1,6 @@
-import { Avatar, Typography } from '@material-ui/core';
+import { Avatar, Button, ButtonGroup, Typography } from '@material-ui/core';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import React, { ReactElement } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import { Masque } from './masque';
 import { LocationOn } from '@material-ui/icons';
 //import { zeroUser } from '../../../sweedenPublicTypes/src/user';
@@ -37,16 +37,24 @@ const coverEffectCSS: CSSProperties = {
 
 export function UserProfile(props: UserProfileProps): ReactElement {
   return (
-    <div style={coverHolder}>
-      <Masque index={-1}>
-        <img src={props.coverUrl} alt="waves" style={coverEffectCSS}/>
-      </Masque>
-      <Avatar src={props.avatar} style={mainAvatar}></Avatar>
-      <Typography variant="h3" style={{color: 'white'}}>{props.name} {props.surname}</Typography>
-      <Typography variant="h5" style={{color: 'white'}}>
-        <LocationOn/> {props.country}, {props.city}
-      </Typography>
-    </div>
+    <Fragment>
+      <div style={coverHolder}>
+        <Masque index={-1}>
+          <img src={props.coverUrl} alt="waves" style={coverEffectCSS}/>
+        </Masque>
+        <Avatar src={props.avatar} style={mainAvatar}></Avatar>
+        <Typography variant="h3" style={{color: 'white'}}>{props.name} {props.surname}</Typography>
+        <Typography variant="h5" style={{color: 'white'}}>
+          <LocationOn/> {props.country}, {props.city}
+        </Typography>
+      </div>
+      <span>Perspective:</span>
+      <ButtonGroup disableElevation variant="contained" color="primary">
+        <Button>Admin</Button>
+        <Button>Seller</Button>
+        <Button>User</Button>
+      </ButtonGroup>
+    </Fragment>
   );
 }
 
