@@ -1,0 +1,19 @@
+.item:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.side-menu {
+  height: 100%;
+  width: 5vw;
+  background: 'whitesmoke';
+  padding: '10px';
+  display: 'grid';
+  justify-content: 'center';
+  position: 'fixed';
+  top: '0';
+  left: '0';
+  align-content: 'space-evenly';
+  box-sizing: 'border-box';
+  box-shadow: 'inset 0px 0px 10px grey';
+};
